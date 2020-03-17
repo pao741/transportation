@@ -1,2 +1,5 @@
 flask
 mysql-connector
+flask-mysqldb
+psycopg2
+psycopg2-binary

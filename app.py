@@ -1,4 +1,8 @@
 from flask import Flask, render_template
+import psycopg2
+conn = psycopg2.connect(database="postgres", user="postgres",
+                        password="milanomilano", host="127.0.0.1", port="5432")
+print("Database Connected....")
 
 app = Flask(__name__)
 

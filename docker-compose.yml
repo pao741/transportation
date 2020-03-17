@@ -1,15 +1,9 @@
 version: "3.7"
 services:
-  web:
-    build: .
-    ports:
-      - "5000:5000"
-    volumes:
-      - .:/code
   db:
-    image: mysql
+    image: postgres
     volumes:
-      - ./db-data:/var/lib/mysql/data
+      - ./db-data:/var/lib/postgres/data
     environment:
       POSTGRES_PASSWORD: milanomilano
     ports:
