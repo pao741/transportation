@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/code
+  db:
+    image: mysql
+    volumes:
+      - ./db-data:/var/lib/mysql/data
+    environment:
+      POSTGRES_PASSWORD: milanomilano
+    ports:
+      - "5432:5432"
