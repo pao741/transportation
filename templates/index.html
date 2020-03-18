@@ -3,5 +3,30 @@
 {% endblock %} {% block body %}
 <div class="content">
   <h1 style="text-align: center">Transportation</h1>
+
+  <h2>The select a station</h2>
+
+  <p>The select element defines a drop-down list:</p>
+
+  <!-- todo: Fix this into using data from database for select. See more detail on stackoverflow -->
+  <form action="/action_page.php">
+    <label for="stations">Choose a station:</label>
+    <select id="stations" name="stations">
+      <option value="National Stadium">National Stadium</option>
+      <option value="Siam">Siam</option>
+      <option value="Ratchadamri">Ratchadamri</option>
+      <option value="Sala Daeng">Sala Daeng</option>
+      <option value="Chong Nonsi">Chong Nonsi</option>
+      <option value="Surasak">Surasak</option>
+      <option value="Saphan Taksin">Saphan Taksin</option>
+      <option value="Krung Thon Buri">Krung Thon Buri</option>
+      <option value="Wongwian Yai">Wongwian Yai</option>
+      <option value="Pho Nimit">Pho Nimit</option>
+      <option value="Talat Phlu">Talat Phlu</option>
+      <option value="Wutthakat">Wutthakat</option>
+      <option value="Bang wa">Bang wa</option>
+    </select>
+    <input type="submit" />
+  </form>
 </div>
 {% endblock %}
