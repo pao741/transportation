@@ -1,6 +1,6 @@
 # transportation
 Run by doing
-> docker build -t transportation .
+> docker-compose build
 
 > docker-compose up
 
