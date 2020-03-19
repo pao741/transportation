@@ -4,6 +4,7 @@ services:
     image: postgres
     volumes:
       - ./db-data:/var/lib/postgres/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       POSTGRES_PASSWORD: milanomilano
     ports:
