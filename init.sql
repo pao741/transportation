@@ -223,8 +223,8 @@ INSERT INTO station VALUES('MPKTP','Tao Poon');
 
 CREATE TABLE IF NOT EXISTS train (
   trainID char(5) NOT NULL,
-  startStationID char(4) DEFAULT NULL,
-  endStationID char(4) DEFAULT NULL,
+  startStationID char(5) DEFAULT NULL,
+  endStationID char(5) DEFAULT NULL,
   PRIMARY KEY (trainID)
 );
 
