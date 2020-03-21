@@ -63,10 +63,10 @@ def all_routes_post():
 class Graph:
 
     def __init__(self):
-        self.graph = defaultdict(list)
+        self.graph = dict()
 
     def addEdge(self, u, v):
-        self.graph[u].append(v)
+        self.graph[u] = v
 
 
 if __name__ == "__main__":
