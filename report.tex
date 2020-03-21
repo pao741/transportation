@@ -1,0 +1,82 @@
+\documentclass[a4paper, 11pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage{fancyvrb}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+    
+\newcommand{\question}[2] {\vspace{.25in} \hrule\vspace{0.5em}
+\noindent{\bf #1: #2} \vspace{0.5em}
+\hrule \vspace{.10in}}
+\renewcommand{\part}[1] {\vspace{.10in} {\bf (#1)}}
+
+\newcommand{\myname}{Anuvit Kulanusataporn, Vikrom Narula}
+\newcommand{\myemail}{}
+\newcommand{\myhwnum}{5}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt}
+ 
+\pagestyle{fancyplain}
+\lhead{\fancyplain{}{\textbf{Transportation}}}      % Note the different brackets!
+\rhead{\fancyplain{}{\myname}}
+\chead{\fancyplain{}{ICCS240}}
+
+\begin{document}
+
+\medskip                        % Skip a "medium" amount of space
+                                % (latex determines what medium is)
+                                % Also try: \bigskip, \littleskip
+
+\thispagestyle{plain}
+\begin{center}                  % Center the following lines
+{\Large ICCS240: Database Project} \\
+{\Large Transportation} \\
+21 March 2020
+\end{center}
+\question{Group Members}
+
+Anuvit Kulanusataporn (5980466)\\
+Vikrom Narula (6081050)
+\question{Overview}
+
+This project goals is to simulate database representing transportation system and use those data to find all paths to destination, a shortest path to destination and determine weather we can reach the desire destination. We use the concepts of database management system and graph theory in order to complete our goal. Specifically, we are going to using walk in graph theory in order to determine path from a vertex to a vertex. 
+\question{Functionalities}
+
+This project, we mainly have 3 functionalities, which are,
+\begin{itemize}
+  \item Determine a route to our desire destination
+  \item Determine all routes our desire destination
+  \item Determine whether we can reach our desire destination
+\end{itemize}
+
+For all of these functionalities, we will be walks in graph theory. We basically have each station as a node and an ability to reach other adjacent station as an edge. Using that graph that we created, we can walk the graph and complete the functionalities.
+
+\question{Database schema}
+
+% We have total three tables in our database with the following schema:\\
+% (These tables import data from dataset folder in github)
+
+% \begin{Verbatim}[commandchars=+\[\]]
+    % AgeStructure(Year INT, Age TEXT, Percentage NUMERIC)
+    
+    % RegionPopulation(Region TEXT, Year INT, Population NUMERIC)
+    
+    % TotalPopulation(+underline[Year] INT, Population NUMERIC, Yearly_percent_change NUMERIC, 
+    % Yearly_change NUMERIC, Migrants INT,Median_Age NUMERIC, 
+    % Fertility_Rate NUMERIC, Density INT, Urban_percent NUMERIC,
+    % Urban_Population NUMERIC, Country_Share NUMERIC,Global_Rank INT)
+% \end{Verbatim}
+
+\question{Backend}
+
+We use python Flask for our project because we wanted to try something new and Flask seems to be both easy and beginner friendly for us to use. As we are using Postgres, we would have to use a Postgres connector for our project, psycopg2. As for our database, we will have a docker-compose to help us with the database. In there, we mount it with a init.sql file so everytime we do docker-compose up, the database will be initialize using that init.sql file. We will be mainly uses POST method from the HTTP methods. And the functions inside the program, we will uses a graph walking algorithm to determine the path from source and destination in order to fulfill our goal.
+
+\question{Frontend}
+
+We uses html to present our interface and we will have 3 pages for each goal that we want to do. We can navigate to these 3 pages using our headers which give us links to these 3 pages.
+
+\end{document}
