@@ -158,4 +158,3 @@ CREATE TABLE IF NOT EXISTS train (
   endStationID char(4) DEFAULT NULL,
   PRIMARY KEY (trainID)
 );
-
