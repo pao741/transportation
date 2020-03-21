@@ -59,10 +59,34 @@ def all_routes_post():
     return render_template('all_routes.html', stationName=stationName, result=result)
 
 
-class Graph():
+class Graph:
 
     def __init__(self):
         self.graph = dict()
+        self.createMapping()
+
+    def createMapping(self):
+        cur.execute("select * from station;")
+        rows = cur.fetchall()
+        n = len(rows)
+        l = 0
+        for i in range(n):
+            row = rows[i]
+            stationId = row[0]
+            stationName = row[1]
+            if i == 0:
+                prev = stationName
+                pid = stationId
+                l += 1
+            elif pid[:3] != stationId[:3]:
+                prev = stationName
+                pid = stationId
+                l += 1
+            else:
+                self.addEdge(prev, stationName)
+                self.addEdge(stationName, prev)
+                prev = stationName
+                pid = stationId
 
     def addEdge(self, u, v):
         self.graph[u] = v
