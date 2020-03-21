@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for
 import psycopg2
+from collection import defaultdict
 conn = psycopg2.connect(database="postgres", user="postgres",
                         password="milanomilano", host="127.0.0.1", port="5432")
 print("Database Connected....")
@@ -57,6 +58,15 @@ def all_routes_post():
     to_station = request.form['to']
     result = "find result"
     return render_template('all_routes.html', stationName=stationName, result=result)
+
+
+class Graph:
+
+    def __init__(self):
+        self.graph = defaultdict(list)
+
+    def addEdge(self, u, v):
+        self.graph[u].append(v)
 
 
 if __name__ == "__main__":
