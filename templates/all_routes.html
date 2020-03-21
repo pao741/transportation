@@ -10,7 +10,7 @@
 
   <p>Choose station:</p>
 
-  <form action="{{ url_for('find_route')}}" method="POST">
+  <form action="{{ url_for('all_routes')}}" method="POST">
     <label for="from">from:</label>
     <select id="from" name="from">
       {% for x in stationName %}

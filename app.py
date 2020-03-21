@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for
 import psycopg2
+import unicodedata
 conn = psycopg2.connect(database="postgres", user="postgres",
                         password="milanomilano", host="127.0.0.1", port="5432")
 print("Database Connected....")
@@ -18,6 +19,8 @@ app = Flask(__name__)
 class Graph:
 
     def __init__(self):
+        self.path = -1
+        self.all_path = []
         self.graph = dict()
         self.createMapping()
 
@@ -76,11 +79,23 @@ def find_route():
     return render_template('find_route.html', stationName=stationName)
 
 
-@app.route('/find_route', methods=['POST'])
+@app.route('/find_route', methods=['POST', 'GET'])
 def find_route_post():
     from_station = request.form['from']
     to_station = request.form['to']
-    result = "find result"
+    from_station = unicodedata.normalize(
+        'NFKD', from_station).encode('ascii', 'ignore').strip()
+    to_station = unicodedata.normalize(
+        'NFKD', to_station).encode('ascii', 'ignore').strip()
+    g = Graph()
+    result = from_station
+    lst = g.dfs(from_station, to_station)
+    result = ""
+    if lst == -1:
+        result = "No such path"
+    for i in lst:
+        result += i + " -> "
+    result = result[:-3]
     return render_template('find_route.html', stationName=stationName, result=result)
 
 
@@ -93,7 +108,16 @@ def can_reach():
 def can_reach_post():
     from_station = request.form['from']
     to_station = request.form['to']
-    result = "find result"
+    from_station = unicodedata.normalize(
+        'NFKD', from_station).encode('ascii', 'ignore').strip()
+    to_station = unicodedata.normalize(
+        'NFKD', to_station).encode('ascii', 'ignore').strip()
+    g = Graph()
+    path = g.dfs(from_station, to_station)
+    if path == -1:
+        result = "No"
+    else:
+        result = "Yes"
     return render_template('can_reach.html', stationName=stationName, result=result)
 
 
@@ -106,6 +130,11 @@ def all_routes():
 def all_routes_post():
     from_station = request.form['from']
     to_station = request.form['to']
+    from_station = unicodedata.normalize(
+        'NFKD', from_station).encode('ascii', 'ignore').strip()
+    to_station = unicodedata.normalize(
+        'NFKD', to_station).encode('ascii', 'ignore').strip()
+    g = Graph()
     result = "find result"
     return render_template('all_routes.html', stationName=stationName, result=result)
 
