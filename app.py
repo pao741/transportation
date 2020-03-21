@@ -89,8 +89,31 @@ class Graph:
                 pid = stationId
 
     def addEdge(self, u, v):
-        self.graph[u] = v
+        if u not in self.graph:
+            self.graph[u] = set()
+        self.graph[u].add(v)
 
+    def dfs(self, src, des):
+        path = []
+        visited = set()
+        return self.dfs_helper(src, des, visited, path)
+
+    def dfs_helper(self, current, des, visited, path):
+        print(current, des)
+        current_path = path[:]
+        visited.add(current)
+        current_path.append(current)
+        print(current_path)
+        if current.lower().strip() == des.lower().strip():
+            return current_path
+        for i in self.graph[current]:
+            if i not in visited:
+                self.dfs_helper(i, des, visited, current_path)
+
+
+g = Graph()
+path = g.dfs("Saphan Kwai", "Asok")
+print(path)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
