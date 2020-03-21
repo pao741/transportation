@@ -1,6 +1,11 @@
 # transportation
+(Optional: Do this if you do compose up before this version)
+
+> docker-compose down 
+
 Run by doing
-> docker build -t transportation .
+
+> docker-compose build
 
 > docker-compose up
 
