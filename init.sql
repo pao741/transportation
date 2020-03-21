@@ -1,13 +1,3 @@
-<<<<<<< HEAD
--- CREATE DATABASE IF NOT EXISTS transportaiton;
--- USE transportaiton;
--- CREATE TABLE IF NOT EXISTS test;
-
-CREATE TABLE IF NOT EXISTS test_table (id integer, name varchar(20))
-
--- INSERT INTO test_table VALUES(1, Pao)
--- INSERT INTO test_table VALUES(2, Vicky)
-=======
 CREATE TABLE IF NOT EXISTS consists_of (
   stationID char(4) NOT NULL,
   trainID char(5) NOT NULL,
@@ -169,4 +159,3 @@ CREATE TABLE IF NOT EXISTS train (
   PRIMARY KEY (trainID)
 );
 
->>>>>>> 4f3eb8f83522db07061ce77d18d149a4ba0b830b
