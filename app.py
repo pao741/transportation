@@ -96,16 +96,15 @@ class Graph:
     def dfs(self, src, des):
         path = []
         visited = set()
-        return self.dfs_helper(src, des, visited, path)
+        self.dfs_helper(src, des, visited, path)
+        return self.path
 
     def dfs_helper(self, current, des, visited, path):
-        print(current, des)
         current_path = path[:]
         visited.add(current)
         current_path.append(current)
-        print(current_path)
-        if current.lower().strip() == des.lower().strip():
-            return current_path
+        if current == des:
+            self.path = current_path
         for i in self.graph[current]:
             if i not in visited:
                 self.dfs_helper(i, des, visited, current_path)
