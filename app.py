@@ -5,14 +5,19 @@ conn = psycopg2.connect(database="postgres", user="postgres",
 print("Database Connected....")
 cur = conn.cursor()
 # cursor is used to execute query
+# cur.execute("select * from FROM name" +
+#             " WHERE table_name = transportation_name ")
+# station_names = []
+# cur.execute(
+#     "CREATE TABLE IF NOT EXISTS test_table (id integer, name varchar(20));")
+# cur.execute("DROP TABLE test_table")
 cur.execute(
-    "select stationName from station")
+    "select table_name from information_schema.tables WHERE table_schema = 'public';")
 rows = cur.fetchall()
-stationName = []
 for row in rows:
-    stationName.append(str(row[0]))
-stationName = sorted(stationName)
-# print(stationName)
+    print("ID = ", row[0])
+    # print("NAME = ", row[1])
+#    station_names.append(row[1])
 
 app = Flask(__name__)
 
