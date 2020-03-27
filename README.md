@@ -12,3 +12,5 @@ Run by doing
 > python app.py
 
 I think
+
+The program will be running at http://0.0.0.0:5000/
